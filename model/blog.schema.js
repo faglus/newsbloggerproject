@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const blogSchema = mongoose.Schema({
-    blog_titles: {
+    blog_title: {
         type: String,
         required: true,
     },
@@ -9,7 +9,7 @@ const blogSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    blog_image: {
+    blog_logo: {
         type: String,
         required: true,
     },

@@ -4,7 +4,36 @@ const app = express();
 require('dotenv').config();
 
 // Import routes and middleware
-const adminRoute =require('./routes/admin.route')
+const isBlogExist = require('./middleware/blogExist');
+
+const adminRoute = require('./routes/admin.route')
+
+// Global middleware to check if the blog exists
+
+app.use(isBlogExist.isBlogEXistOrNot);
+
+
+// Use routes
+
+app.use('/', adminRoute)
+
+
+
+// Root route
+app.get('/', (req, res) => {
+    res.send("Welcome to the NEWZBLOGGER new project!");
+});
+
+
+
+
+
+
+
+
+
+
+
 
 // Mongoose connection
 const databaseUrl = process.env.DATABASE_URL;
@@ -21,19 +50,10 @@ db.once('open', () => {
     console.log(`Connected to MongoDB: ${dbName}`);
 });
 
-// Global middleware to check if the blog exists
 
-
-// Use routes
-app.use('/', adminRoute)
-
-// Root route
-app.get('/', (req, res) => {
-    res.send("Welcome to the NEWZBLOGGER new project!");
-});
 
 // Start server on specified port
-const PORTNo = process.env.PORT 
+const PORTNo = process.env.PORT
 app.listen(PORTNo, () => {
     console.log(`Server started at PORT No ${PORTNo}`);
 });
