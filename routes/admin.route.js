@@ -40,8 +40,12 @@ const adminController = require('../controller/admin.controller')
 
 admin_router.get('/blog-setup', adminController.blogSetup);
 
-admin_router.post('/blog-setup',upload.single('blog_image'),adminController.blogSetup)
+admin_router.post('/blog-setup',upload.single('blog_logo'),adminController.blogSetupSave);
 
 admin_router.get('/');
+
+admin_router.get('/dashboard',adminController.dashboard)
+
+
 
 module.exports = admin_router;

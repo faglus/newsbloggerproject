@@ -6,7 +6,9 @@ require('dotenv').config();
 // Import routes and middleware
 const isBlogExist = require('./middleware/blogExist');
 
-const adminRoute = require('./routes/admin.route')
+const adminRoute = require('./routes/admin.route');
+
+const userRoute = require('./routes/user.route');
 
 // Global middleware to check if the blog exists
 
@@ -15,7 +17,9 @@ app.use(isBlogExist.isBlogEXistOrNot);
 
 // Use routes
 
-app.use('/', adminRoute)
+app.use('/', adminRoute);
+
+app.use('/', userRoute);
 
 
 
