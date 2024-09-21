@@ -23,7 +23,7 @@ const verifyLogin = async (req, res) => {
 
         if (userData) {
             const passwordMatch = bcrypt.compare(password, userData.password);
-            req.session.user_id = userData._id;
+            req.session.User_id = userData._id;
             req.session.is_admin = userData.is_admin;
             if (passwordMatch) {
                 if (userData.is_admin == 1) {
@@ -56,6 +56,7 @@ const profile =(req,res)=>{
 
 module.exports = {
     loginLoader,
+    
     verifyLogin,
     profile
 }

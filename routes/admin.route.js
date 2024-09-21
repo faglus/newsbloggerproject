@@ -32,7 +32,8 @@ const upload = multer({ storage: storage });
 
 
 
-const adminController = require('../controller/admin.controller')
+const adminController = require('../controller/admin.controller');
+const adminLoginAuth=require('../middleware/adminLoginAuth');
 
 
 
@@ -44,7 +45,7 @@ admin_router.post('/blog-setup',upload.single('blog_logo'),adminController.blogS
 
 admin_router.get('/');
 
-admin_router.get('/dashboard',adminController.dashboard)
+admin_router.get('/dashboard',adminLoginAuth.isLogin,adminController.dashboard);
 
 
 

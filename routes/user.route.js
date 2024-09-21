@@ -26,8 +26,9 @@ user_router.use(session({
 
 
 const userController= require('../controller/user.controller');
+const adminLoginAuth = require('../middleware/adminLoginAuth');
 
-user_router.get('/login',userController.loginLoader);
+user_router.get('/login',adminLoginAuth.isLogout,userController.loginLoader);
 
 user_router.post('/login',userController.verifyLogin)
 
