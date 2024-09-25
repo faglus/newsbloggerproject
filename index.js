@@ -17,6 +17,7 @@ const session = require('express-session');
 const sessionSecretKey = process.env.SESSION_SECRET_KEY;
 
 // Middleware: Body parsing 
+
 app.use(express.urlencoded({ extended: true })); 
 app.use(express.json()); 
  

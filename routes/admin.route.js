@@ -2,13 +2,13 @@ const express = require('express');
 
 const admin_router = express();
 
-const bodyParser =require('body-parser');
+const bodyParser = require('body-parser');
 admin_router.use(bodyParser.json());
-admin_router.use(bodyParser.urlencoded({extended: true}));
+admin_router.use(bodyParser.urlencoded({ extended: true }));
 
 // view
-admin_router.set('view engine','ejs');
-admin_router.set('views','./views');
+admin_router.set('view engine', 'ejs');
+admin_router.set('views', './views');
 
 const multer = require('multer');
 const path = require('path');
@@ -33,7 +33,7 @@ const upload = multer({ storage: storage });
 
 
 const adminController = require('../controller/admin.controller');
-const adminLoginAuth=require('../middleware/adminLoginAuth');
+const adminLoginAuth = require('../middleware/adminLoginAuth');
 
 
 
@@ -41,11 +41,15 @@ const adminLoginAuth=require('../middleware/adminLoginAuth');
 
 admin_router.get('/blog-setup', adminController.blogSetup);
 
-admin_router.post('/blog-setup',upload.single('blog_logo'),adminController.blogSetupSave);
+admin_router.post('/blog-setup', upload.single('blog_logo'), adminController.blogSetupSave);
 
 admin_router.get('/');
 
-admin_router.get('/dashboard',adminLoginAuth.isLogin,adminController.dashboard);
+admin_router.get('/dashboard', adminLoginAuth.isLogin, adminController.dashboard);
+
+admin_router.get('/create-post', adminLoginAuth.isLogin, adminController.loadPostdashboard);
+
+admin_router.post('/create-post', adminLoginAuth.isLogin, adminController.addPost);
 
 
 

@@ -11,7 +11,7 @@ require('dotenv').config();
 user_router.set('view engine', 'ejs');
 user_router.set('views', './views');
 
-user_router.use(express.static('public'));
+// user_router.use(express.static('public'));
 
 
 // const session = require('express-session');
@@ -25,13 +25,15 @@ user_router.use(express.static('public'));
 //   }));
 
 
-const userController= require('../controller/user.controller');
+const userController = require('../controller/user.controller');
 const adminLoginAuth = require('../middleware/adminLoginAuth');
 
-user_router.get('/login',adminLoginAuth.isLogout,userController.loginLoader);
+user_router.get('/login', adminLoginAuth.isLogout, userController.loginLoader);
 
-user_router.post('/login',userController.verifyLogin)
+user_router.post('/login', userController.verifyLogin);
 
-user_router.get('/profile',userController.profile);
+user_router.get('/logout', adminLoginAuth.isLogout, userController.logout);
 
-module.exports= user_router;
+user_router.get('/profile', userController.profile);
+
+module.exports = user_router;

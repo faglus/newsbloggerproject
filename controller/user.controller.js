@@ -44,19 +44,29 @@ const verifyLogin = async (req, res) => {
     }
 };
 
-const profile =(req,res)=>{
-    try{
+const profile = (req, res) => {
+    try {
         res.send('i am in profile');
-    } catch(error){
+    } catch (error) {
         console.log(error.message);
     }
-}
+};
+
+const logout = async (req, res) => {
+    try {
+        req.session.destroy();
+        res.redirect('/login');
+    } catch (error) {
+        console.log(error.message);
+    }
+};
 
 
 
 module.exports = {
     loginLoader,
-    
+
     verifyLogin,
-    profile
+    profile,
+    logout
 }
