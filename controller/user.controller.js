@@ -22,7 +22,7 @@ const verifyLogin = async (req, res) => {
         const userData = await UserSchema.findOne({ email: email });
 
         if (userData) {
-            const passwordMatch = bcrypt.compare(password, userData.password);
+            const passwordMatch = await bcrypt.compare(password, userData.password);
             req.session.User_id = userData._id;
             req.session.is_admin = userData.is_admin;
             if (passwordMatch) {
@@ -59,8 +59,7 @@ const logout = async (req, res) => {
     } catch (error) {
         console.log(error.message);
     }
-};
-
+}
 
 
 module.exports = {

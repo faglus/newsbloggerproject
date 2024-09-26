@@ -12,6 +12,7 @@ const adminRoute = require('./routes/admin.route');
 
 const userRoute = require('./routes/user.route');
 
+const blogRoute= require('./routes/blog.route')
 
 const session = require('express-session');
 const sessionSecretKey = process.env.SESSION_SECRET_KEY;
@@ -44,7 +45,7 @@ app.use('/', adminRoute);
 
 app.use('/', userRoute);
 
-
+app.use('/',blogRoute);
 
 // Root route
 app.get('/', (req, res) => {

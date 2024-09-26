@@ -32,7 +32,7 @@ user_router.get('/login', adminLoginAuth.isLogout, userController.loginLoader);
 
 user_router.post('/login', userController.verifyLogin);
 
-user_router.get('/logout', adminLoginAuth.isLogout, userController.logout);
+user_router.get('/logout', adminLoginAuth.isLogin, userController.logout);
 
 user_router.get('/profile', userController.profile);
 
