@@ -1,6 +1,10 @@
 const UserSchema = require('../model/user.schema');
 const bcrypt = require('bcrypt');
-
+const randomstring=require('randomstring');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
+emailUser =process.send.EMAIL_USER;
+emailPrassword = process.send.EMAIL_PASSWORD;
 
 
 
@@ -59,13 +63,22 @@ const logout = async (req, res) => {
     } catch (error) {
         console.log(error.message);
     }
+};
+
+const forgetLoad = (req, res) => {
+    try {
+        res.render('forget-password');
+
+    } catch (error) {
+        console.log(error.message)
+    }
 }
 
 
 module.exports = {
     loginLoader,
-
     verifyLogin,
     profile,
-    logout
+    logout,
+    forgetLoad,
 }

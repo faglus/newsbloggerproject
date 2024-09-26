@@ -1,27 +1,27 @@
 const Post = require('../model/post.schema');
 
 
-const loadBlogs = async(req,res)=>{
-    try{
+const loadBlogs = async (req, res) => {
+    try {
         const posts = await Post.find({});
-        res.render('blog',{posts:posts});
-    } catch(error){
+        res.render('blog', { posts: posts });
+    } catch (error) {
         console.log(error.message);
     }
 };
 
-const loadPost = async(req,res)=>{
-    try{
-        const post = await Post.findOne({"_id": req.params.id});
-        res.render('post',{post:post});
+const loadPost = async (req, res) => {
+    try {
+        const post = await Post.findOne({ "_id": req.params.id });
+        res.render('post', { post: post });
 
 
-    }catch(error){
+    } catch (error) {
         console.log(error.message);
     }
 }
 
-module.exports={
+module.exports = {
     loadBlogs,
     loadPost,
 }
