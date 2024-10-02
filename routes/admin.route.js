@@ -12,7 +12,19 @@ admin_router.set('views', './views');
 
 const multer = require('multer');
 const path = require('path');
+
 admin_router.use(express.static('public'));
+
+const session = require('express-session');
+const sessionSecretKey = process.env.SESSION_SECRET_KEY;
+
+
+admin_router.use(session({
+    secret: sessionSecretKey,
+    resave: true,
+    saveUninitialized: true,
+    // cookie: { secure: true }
+  }));
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

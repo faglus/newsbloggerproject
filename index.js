@@ -14,21 +14,21 @@ const userRoute = require('./routes/user.route');
 
 const blogRoute= require('./routes/blog.route')
 
-const session = require('express-session');
-const sessionSecretKey = process.env.SESSION_SECRET_KEY;
+// const session = require('express-session');
+// const sessionSecretKey = process.env.SESSION_SECRET_KEY;
 
 // Middleware: Body parsing 
 
-app.use(express.urlencoded({ extended: true })); 
-app.use(express.json()); 
+// app.use(express.urlencoded({ extended: true })); 
+// app.use(express.json()); 
  
-// Session middleware - should be loaded before routes 
-app.use(session({ 
-    secret: sessionSecretKey,
-    resave: false, 
-    saveUninitialized: true, 
-    cookie: { secure: false }  // Set to true if using HTTPS 
-})); 
+// // Session middleware - should be loaded before routes 
+// app.use(session({ 
+//     secret: sessionSecretKey,
+//     resave: false, 
+//     saveUninitialized: true, 
+//     cookie: { secure: false }  // Set to true if using HTTPS 
+// })); 
 
 
 

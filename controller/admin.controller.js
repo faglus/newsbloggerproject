@@ -10,7 +10,8 @@ const securePassword = async (password) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         return hashedPassword;
     } catch (error) {
-        console.log(error.message);
+        console.error('Error hashing password:', error.message);
+        throw new Error('Password hashing failed'); 
     }
 };
 
@@ -110,6 +111,7 @@ module.exports = {
     blogSetupSave,
     dashboard,
     loadPostdashboard,
-    addPost
+    addPost,
+    securePassword
 
 }
